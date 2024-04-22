@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>文件上传</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .file, button {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="file">
+  <input type="file">
+</div>
+<button>上传</button>
+<script>
+  document.querySelector('button').addEventListener('click', () => {
+    // 单文件上传，获取files数组第一个元素
+    const file = document.querySelector('input[type="file"]').files[0]
+    const xhr = new XMLHttpRequest()
+    xhr.open('post', '/api/upload', true)
+    xhr.onload = () => {
+      const res = xhr.responseText
+      console.log(res)
+    }
+    const form = new FormData()
+    form.append('file', file)
+    xhr.send(form)
+  })
+</script>
+</body>
+</html>

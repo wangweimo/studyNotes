@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: auto;
+  box-sizing: border-box;
+}
+
+img {
+  margin: 20px;
+  width: 50%;
+  border: 5px solid #ffa500;
+}

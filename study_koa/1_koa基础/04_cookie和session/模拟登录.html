@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>登录</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    li {
+      list-style: none;
+      margin: 20px;
+    }
+
+    input {
+      width: 150px;
+      height: 20px;
+    }
+
+    label {
+      display: inline-block;
+      margin-right: 20px;
+    }
+  </style>
+</head>
+<body>
+<ul>
+  <li>
+    <label for="username">用户名：</label>
+    <input type="text" id="username">
+  </li>
+  <li>
+    <label for="password">密&nbsp;&nbsp;&nbsp;码：</label>
+    <input type="password" id="password">
+  </li>
+  <li>
+    <button class="btn_login">登录</button>
+  </li>
+</ul>
+<h2 class="user_data"></h2>
+<script>
+  const btnLogin = document.querySelector('.btn_login')
+  btnLogin.addEventListener('click', () => {
+    const username = document.querySelector('#username').value
+    const password = document.querySelector('#password').value
+    if (!username || !password) {
+      return
+    }
+    const req = fetch('http://localhost:3000/login', {
+      method: 'post',
+      body: `username=${username}&password=${password}`,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+    req.then(stream =>
+        stream.text()
+    ).then(res => {
+      document.querySelector('.user_data').innerText = res
+    })
+  })
+</script>
+</body>
+</html>
