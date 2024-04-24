@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>文件上传</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .file, button {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+<form action="http://localhost:4000/upload" method="post" enctype="multipart/form-data">
+  <div class="file">
+    <input type="file">
+  </div>
+  <button type="submit">上传</button>
+</form>
+</body>
+</html>
